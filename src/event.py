@@ -16,6 +16,8 @@ def doEvent(main):
         player.moveLeft()
     if keystate[K_RIGHT]:
         player.moveRight()
+    if keystate[K_SPACE]:
+        player.shoot()                                                                
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT: 

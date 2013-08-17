@@ -1,12 +1,18 @@
 import pygame, os, init, render, event, update
 
 from entities.Player import Player
+from entities.AmmoType import AmmoType
 
 class Main():
     
     screenSize = (640, 480)
 
     shipImage = pygame.image.load("C:\Users\Magnus\git\spaceinvaders\gfx\ship.png")
+    ammoLaser = pygame.image.load("C:\Users\Magnus\git\spaceinvaders\gfx\laser.png")
+    
+    #The players ammo type, only 1 for now
+    
+    ammoType = AmmoType(0, -50, ammoLaser)
     
     def __init__(self):
 
@@ -14,8 +20,11 @@ class Main():
         
         self.screen = init.init(self.screenSize)
         
-          #Create main player
-        self.player = Player(self.shipImage, 162, (300, 420))
+        #Projectiles
+        self.projectilesList = []
+        
+        #Create main player
+        self.player = Player(self, self.shipImage, 162, (300, 420), self.ammoType)
         
         self.startGameLoop()
 

@@ -9,7 +9,6 @@ class Entity(object):
         self.size = size
 
     def draw(self, screen):
-        print("Draw!")
         screen.blit(self.image, self.pos)
         
     def moveLeft(self):
