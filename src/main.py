@@ -2,6 +2,7 @@ import pygame, os, init, render, event, update
 
 from entities.Player import Player
 from entities.AmmoType import AmmoType
+from level.Background import Background
 
 class Main():
     
@@ -25,6 +26,9 @@ class Main():
         
         #Create main player
         self.player = Player(self, self.shipImage, 162, (300, 420), self.ammoType)
+        
+        #Create background
+        self.space = Background(25, 2, self.screenSize)
         
         self.startGameLoop()
 

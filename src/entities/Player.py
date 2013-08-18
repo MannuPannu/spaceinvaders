@@ -25,7 +25,7 @@ class Player(Entity.Entity):
     def shoot(self):
         #Shoot and wait for gun cool down before we can shoot again!
         #print("Time since last shot:" + str(self.coolDown.tick()))
-        print("CoolDown:" + str(self.ammoType.coolDown))     
+        #print("CoolDown:" + str(self.ammoType.coolDown))     
         
         if((self.coolDownTimer + self.ammoType.coolDown) < pygame.time.get_ticks()):     
             print("Shooting!")      
@@ -33,3 +33,6 @@ class Player(Entity.Entity):
             self.mainObj.projectilesList.append(projectile) #Put in a global list, for render/updating purposes
             
             self.coolDownTimer = pygame.time.get_ticks() #Reset timer
+            
+            
+            
