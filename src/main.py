@@ -2,7 +2,7 @@ import pygame, os, init, render, event, update
 
 from entities.Player import Player
 from entities.AmmoType import AmmoType
-from level.Background import Background
+from level.BackgroundScroller import BackgroundScroller
 
 class Main():
     
@@ -27,9 +27,7 @@ class Main():
         #Create main player
         self.player = Player(self, self.shipImage, 162, (300, 420), self.ammoType)
         
-        #Create background
-        self.space = Background(25, 2, self.screenSize)
-        
+        self.backgroundScroller = BackgroundScroller(self.screenSize) 
         self.startGameLoop()
 
     def startGameLoop(self):

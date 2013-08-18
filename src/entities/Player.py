@@ -27,8 +27,7 @@ class Player(Entity.Entity):
         #print("Time since last shot:" + str(self.coolDown.tick()))
         #print("CoolDown:" + str(self.ammoType.coolDown))     
         
-        if((self.coolDownTimer + self.ammoType.coolDown) < pygame.time.get_ticks()):     
-            print("Shooting!")      
+        if((self.coolDownTimer + self.ammoType.coolDown) < pygame.time.get_ticks()):         
             projectile = Projectile(self.ammoType, self.pos)
             self.mainObj.projectilesList.append(projectile) #Put in a global list, for render/updating purposes
             

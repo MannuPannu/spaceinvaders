@@ -5,14 +5,14 @@ def doRender(main):
     black = 0, 0, 0
 
     main.screen.fill(black)
+    
+    main.backgroundScroller.draw(main.screen)
 
     #Draw player
-   # main.player.draw(main.screen)
+    main.player.draw(main.screen)
     
     #Draw projectiles
-   # for projectile in main.projectilesList:
-       # projectile.draw(main.screen)
+    for projectile in main.projectilesList:
+        projectile.draw(main.screen)
        
-    main.space.draw(main.screen)
-
     pygame.display.flip()

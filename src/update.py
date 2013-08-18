@@ -8,6 +8,8 @@ def doUpdate(main):
         #Delete projectiles that has vanished off the screen (posY < 0)
         if(projectile.pos[1] < -100):
             del main.projectilesList[index]
-            
+    
+    #Scroll background
+    main.backgroundScroller.scroll()
             
 
