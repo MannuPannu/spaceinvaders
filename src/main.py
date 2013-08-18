@@ -13,7 +13,7 @@ class Main():
     
     #The players ammo type, only 1 for now
     
-    ammoType = AmmoType(0, -50, ammoLaser, 350)
+    ammoType = AmmoType(0, -25, ammoLaser, 350)
     
     def __init__(self):
 
@@ -25,7 +25,7 @@ class Main():
         self.projectilesList = []
         
         #Create main player
-        self.player = Player(self, self.shipImage, 162, (300, 420), self.ammoType)
+        self.player = Player(self, self.shipImage, 64, (300, 420), self.ammoType, self.screenSize)
         
         self.backgroundScroller = BackgroundScroller(self.screenSize) 
         self.startGameLoop()

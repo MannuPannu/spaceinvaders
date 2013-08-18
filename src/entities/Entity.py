@@ -51,9 +51,26 @@ class Entity(object):
         if self.moveY < -self.maxSpeed:
             self.moveY = -self.maxSpeed
 
-        #move player
+        #move entity
         (x, y) = self.pos
         
         self.pos = (x + self.moveX, y + self.moveY)
         self.breakMove(self.breakSpeed)
+        
+    #Get the position an entity will end up in after a move
+    def getMovePos(self):
+        x, y = self.pos
+
+        #Cap speed if movement speed is above max
+        if self.moveX > self.maxSpeed:
+            self.moveX = self.maxSpeed
+        if self.moveX < -self.maxSpeed:
+            self.moveX = -self.maxSpeed
+        if self.moveY > self.maxSpeed:
+            self.moveY = self.maxSpeed
+        if self.moveY < -self.maxSpeed:
+            self.moveY = -self.maxSpeed
+
+        return (x + self.moveX, y + self.moveY)
+
         
