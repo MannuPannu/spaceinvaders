@@ -6,9 +6,6 @@ def doRender(main):
 
     main.screen.fill(black)
 
-    #draw map
-    #main.level.draw(main.screen)
-
     #Draw player
     main.player.draw(main.screen)
     

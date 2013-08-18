@@ -12,7 +12,7 @@ class Main():
     
     #The players ammo type, only 1 for now
     
-    ammoType = AmmoType(0, -50, ammoLaser)
+    ammoType = AmmoType(0, -50, ammoLaser, 350)
     
     def __init__(self):
 
@@ -33,14 +33,14 @@ class Main():
         while True:
             event.doEvent(self)
 
-            if self.gameOver == True:
+            if self.gameOver == True: 
                 break
 
             update.doUpdate(self) 
     
             render.doRender(self)
 
-            pygame.time.delay(75)
+            pygame.time.delay(40)
 
     pygame.quit()
     
