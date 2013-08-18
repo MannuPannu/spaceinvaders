@@ -40,11 +40,14 @@ class Player(Entity.Entity):
     def shoot(self):
         #Shoot and wait for gun cool down before we can shoot again!
         if((self.coolDownTimer + self.ammoType.coolDown) < pygame.time.get_ticks()):
+            self.mainObj.laserShotSound.play()
                      
             projectile = Projectile(self.ammoType, (self.pos[0] + (float(self.size)/3), self.pos[1]))
             self.mainObj.projectilesList.append(projectile) #Put in a global list, for render/updating purposes
             
             self.coolDownTimer = pygame.time.get_ticks() #Reset timer
+            
+        
             
             
             

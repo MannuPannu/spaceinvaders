@@ -11,6 +11,10 @@ class Main():
     shipImage = pygame.image.load("C:\Users\Magnus\git\spaceinvaders\gfx\ship.png")
     ammoLaser = pygame.image.load("C:\Users\Magnus\git\spaceinvaders\gfx\laser.png")
     
+    #init sounds
+    pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
+    
+    laserShotSound = pygame.mixer.Sound("C:\Users\Magnus\git\spaceinvaders\sounds\lasershot.wav")
     #The players ammo type, only 1 for now
     
     ammoType = AmmoType(0, -25, ammoLaser, 350)
