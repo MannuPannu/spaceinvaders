@@ -16,6 +16,10 @@ def doEvent(main):
         player.moveLeft()
     if keystate[K_RIGHT]:
         player.moveRight()
+    if keystate[K_UP]:
+        player.moveUp()
+    if keystate[K_DOWN]:
+        player.moveDown()
     if keystate[K_SPACE]:
         player.shoot()                                                                
 

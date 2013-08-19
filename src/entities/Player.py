@@ -6,7 +6,7 @@ class Player(Entity.Entity):
     """ The player class """
 
     #Player speed
-    maxSpeed = 15
+    maxSpeed = 12
     acceleration = 5
     breakSpeed = 2
     
@@ -21,21 +21,37 @@ class Player(Entity.Entity):
         super(Player, self).__init__(image, size)
 
     def tick(self):
+    
+        #Set screen limit for player move horizontally
         movePosX = self.getMovePos()[0]
         
-        print(str(movePosX))
-        
-        #Set screen limit for player move horizontally
         if(movePosX < (self.screenSize[0] - self.size) and movePosX > 0 ):
             self.move()
         else: 
             #Stop player move and align it with the screen border
             if (self.moveX > 0): #Player went to the right
-                self.pos = (self.screenSize[0] - self.size, self.pos[1])
+                self.pos = (self.screenSize[0] - self.size - 1, self.pos[1])
             elif (self.moveX < 0):
                 self.pos = (0, self.pos[1])
             
             self.moveX = 0
+            self.move() #Move in y-axis
+            
+        #Set screen limit for player moving vertically
+        movePosY = self.getMovePos()[1]
+        
+        if(movePosY > 0 and (movePosY + self.size) < self.screenSize[1]):
+            self.move()
+        else:
+        #Stop player move and align it with the screen border
+            if (self.moveY > 0): #Player is going down
+                self.pos = (self.pos[0], self.screenSize[1] - self.size )
+            elif (self.moveY < 0):
+                self.pos = (self.pos[0], 0)
+            
+            self.moveY = 0
+            self.move() #Move in x-axis
+            
             
     def shoot(self):
         #Shoot and wait for gun cool down before we can shoot again!

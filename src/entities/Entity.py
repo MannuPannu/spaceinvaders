@@ -16,6 +16,12 @@ class Entity(object):
 
     def moveRight(self):
         self.moveX += self.acceleration
+        
+    def moveUp(self):
+        self.moveY -= self.acceleration
+        
+    def moveDown(self):
+        self.moveY += self.acceleration
     
     # Breaks the speed of entity    
     def breakMove(self, breakSpeed):
