@@ -7,9 +7,11 @@ from level.BackgroundScroller import BackgroundScroller
 class Main():
     
     screenSize = (640, 480)
+    
+    mypath = os.path.dirname( os.path.realpath( __file__ ) )
 
-    shipImage = pygame.image.load("C:\Users\Magnus\git\spaceinvaders\gfx\ship.png")
-    ammoLaser = pygame.image.load("C:\Users\Magnus\git\spaceinvaders\gfx\laser.png")
+    shipImage = pygame.image.load(os.path.join('..\gfx', 'ship2.png'))
+    ammoLaser = pygame.image.load(os.path.join('..\gfx', 'greenlaserbeam.png'))
     
     #init sounds
     pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
@@ -29,7 +31,7 @@ class Main():
         self.projectilesList = []
         
         #Create main player
-        self.player = Player(self, self.shipImage, 64, (300, 420), self.ammoType, self.screenSize)
+        self.player = Player(self, self.shipImage, 32, (300, 420), self.ammoType, self.screenSize)
         
         self.backgroundScroller = BackgroundScroller(self.screenSize) 
         self.startGameLoop()
