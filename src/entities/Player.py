@@ -1,24 +1,23 @@
-import Entity, pygame
+import CollidableEntity, pygame
 
 from Projectile import Projectile
 
-class Player(Entity.Entity):
+class Player(CollidableEntity.CollidableEntity):
     """ The player class """
 
-    #Player speed
-    maxSpeed = 12
+    #Player physics
+    maxSpeed = 6
     acceleration = 5
-    breakSpeed = 2
+    breakSpeed = 0.2
     
     coolDownTimer = 0
     
     def __init__(self, mainObj, image, size, pos, ammoType, screenSize):
-        self.pos = pos
         self.ammoType = ammoType
         self.mainObj = mainObj
         self.screenSize = screenSize
         
-        super(Player, self).__init__(image, size)
+        super(Player, self).__init__(image, size, pos)
 
     def tick(self):
     
@@ -58,7 +57,7 @@ class Player(Entity.Entity):
         if((self.coolDownTimer + self.ammoType.coolDown) < pygame.time.get_ticks()):
             self.mainObj.laserShotSound.play()
                      
-            projectile = Projectile(self.ammoType, (self.pos[0], self.pos[1]))
+            projectile = Projectile(self.ammoType, (self.pos[0], self.pos[1]), "UP")
             self.mainObj.projectilesList.append(projectile) #Put in a global list, for render/updating purposes
             
             self.coolDownTimer = pygame.time.get_ticks() #Reset timer

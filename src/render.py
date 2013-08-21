@@ -12,6 +12,12 @@ def doRender(main):
     for projectile in main.projectilesList:
         projectile.draw(main.screen)
     
+    #Draw asterois
+    for asteroid in main.asteroidsList:
+        asteroid.draw(main.screen)
+        
+    print(len(main.asteroidsList))
+    
     #Draw player
     main.player.draw(main.screen)
        

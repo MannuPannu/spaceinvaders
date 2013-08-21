@@ -2,6 +2,7 @@ import pygame, os, init, render, event, update
 
 from entities.Player import Player
 from entities.AmmoType import AmmoType
+from entities.Asteroid import Asteroid
 from level.BackgroundScroller import BackgroundScroller
 
 class Main():
@@ -11,15 +12,16 @@ class Main():
     mypath = os.path.dirname( os.path.realpath( __file__ ) )
 
     shipImage = pygame.image.load(os.path.join('..\gfx', 'ship2.png'))
-    ammoLaser = pygame.image.load(os.path.join('..\gfx', 'greenlaserbeam.png'))
+    ammoLaserImage = pygame.image.load(os.path.join('..\gfx', 'greenlaserbeam.png'))
+    asteroidImage = pygame.image.load(os.path.join('..\gfx', 'asteroid.png'))
     
     #init sounds
     pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
     
-    laserShotSound = pygame.mixer.Sound("C:\Users\Magnus\git\spaceinvaders\sounds\lasershot.wav")
+    laserShotSound = pygame.mixer.Sound(os.path.join('..\sounds\lasershot.wav'))
     #The players ammo type, only 1 for now
     
-    ammoType = AmmoType(0, -25, ammoLaser, 350)
+    ammoType = AmmoType(25, ammoLaserImage, (32, 64), 350)
     
     def __init__(self):
 
@@ -29,9 +31,11 @@ class Main():
         
         #Projectiles
         self.projectilesList = []
+        self.asteroidsList = []
         
         #Create main player
         self.player = Player(self, self.shipImage, 32, (300, 420), self.ammoType, self.screenSize)
+        self.asteroidsList.append(Asteroid(self.asteroidImage, 32, (100, 100), 2, 2)) 
         
         self.backgroundScroller = BackgroundScroller(self.screenSize) 
         self.startGameLoop()
@@ -52,6 +56,5 @@ class Main():
 
     pygame.quit()
     
-
 game = Main()
 

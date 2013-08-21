@@ -3,10 +3,12 @@ class Entity(object):
     
     moveX = 0
     moveY = 0
+    pos = (0, 0)
     
-    def __init__(self, image, size):
+    def __init__(self, image, size, pos):
         self.image = image
         self.size = size
+        self.pos = pos
 
     def draw(self, screen):
         screen.blit(self.image, self.pos)
