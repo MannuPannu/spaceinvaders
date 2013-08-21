@@ -10,8 +10,11 @@ class Projectile(CollidableEntity):
     acceleration = 10
     breakSpeed = 0
     
+    hasCollided = False
+    
     #Set the speed and direction of the projectile
-    def __init__(self, ammoType, pos, direction):
+    def __init__(self, mainObj, ammoType, pos, direction):
+        self.mainObj = mainObj
         self.maxSpeed = ammoType.projectileSpeed
         self.acceleration = ammoType.projectileSpeed
         
@@ -22,6 +25,15 @@ class Projectile(CollidableEntity):
         super(Projectile,self).__init__(ammoType.image, ammoType.imageSize, pos)
                      
     def tick(self):
+        
+        #Check for collisions on different entities
+        (doCollide, entityIndex) = self.checkCollision(self.mainObj.asteroidsList)
+         
+        if(doCollide):
+            print("Hit!")
+            self.mainObj.asteroidsList.pop(entityIndex)  
+            self.hasCollided = True  
+            
         self.move()    
     
     def draw(self, screen):

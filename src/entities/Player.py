@@ -21,43 +21,35 @@ class Player(CollidableEntity.CollidableEntity):
 
     def tick(self):
     
-        #Set screen limit for player move horizontally
-        movePosX = self.getMovePos()[0]
+        moveTargetPos = self.getMovePos() #Target position after next move
         
-        if(movePosX < (self.screenSize[0] - self.size) and movePosX > 0 ):
-            self.move()
-        else: 
-            #Stop player move and align it with the screen border
-            if (self.moveX > 0): #Player went to the right
-                self.pos = (self.screenSize[0] - self.size - 1, self.pos[1])
-            elif (self.moveX < 0):
-                self.pos = (0, self.pos[1])
-            
+        #Set screen limit for player move horizontally
+        movePosX = moveTargetPos[0]
+        
+        if(movePosX < 0 or (movePosX + self.size[0]) > self.screenSize[0]):
             self.moveX = 0
-            self.move() #Move in y-axis
             
         #Set screen limit for player moving vertically
-        movePosY = self.getMovePos()[1]
+        movePosY = moveTargetPos[1]
+            
+        if(movePosY < 0 or (movePosY + self.size[1]) > self.screenSize[1]):
+            self.moveY = 0
+            
+        #Check for collisions on different entities
+        (doCollide, entityIndex) = self.checkCollision(self.mainObj.asteroidsList) 
         
-        if(movePosY > 0 and (movePosY + self.size) < self.screenSize[1]):
+        if(not doCollide): 
             self.move()
         else:
-        #Stop player move and align it with the screen border
-            if (self.moveY > 0): #Player is going down
-                self.pos = (self.pos[0], self.screenSize[1] - self.size )
-            elif (self.moveY < 0):
-                self.pos = (self.pos[0], 0)
-            
-            self.moveY = 0
-            self.move() #Move in x-axis
-            
+            print("Game over")
+            #self.mainObj.gameOver = True
             
     def shoot(self):
         #Shoot and wait for gun cool down before we can shoot again!
         if((self.coolDownTimer + self.ammoType.coolDown) < pygame.time.get_ticks()):
             self.mainObj.laserShotSound.play()
                      
-            projectile = Projectile(self.ammoType, (self.pos[0], self.pos[1]), "UP")
+            projectile = Projectile(self.mainObj, self.ammoType, (self.pos[0] + float(self.size[0])/2, self.pos[1]), "UP")
             self.mainObj.projectilesList.append(projectile) #Put in a global list, for render/updating purposes
             
             self.coolDownTimer = pygame.time.get_ticks() #Reset timer

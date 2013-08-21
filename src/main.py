@@ -15,13 +15,13 @@ class Main():
     ammoLaserImage = pygame.image.load(os.path.join('..\gfx', 'greenlaserbeam.png'))
     asteroidImage = pygame.image.load(os.path.join('..\gfx', 'asteroid.png'))
     
-    #init sounds
+    #Init sounds
     pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
     
     laserShotSound = pygame.mixer.Sound(os.path.join('..\sounds\lasershot.wav'))
     #The players ammo type, only 1 for now
     
-    ammoType = AmmoType(25, ammoLaserImage, (32, 64), 350)
+    ammoType = AmmoType(15, ammoLaserImage, (4, 32), 350)
     
     def __init__(self):
 
@@ -34,8 +34,8 @@ class Main():
         self.asteroidsList = []
         
         #Create main player
-        self.player = Player(self, self.shipImage, 32, (300, 420), self.ammoType, self.screenSize)
-        self.asteroidsList.append(Asteroid(self.asteroidImage, 32, (100, 100), 2, 2)) 
+        self.player = Player(self, self.shipImage, (32,32), (300, 420), self.ammoType, self.screenSize)
+        self.asteroidsList.append(Asteroid(self.asteroidImage, (32, 32), (100, 100), 1, 1)) 
         
         self.backgroundScroller = BackgroundScroller(self.screenSize) 
         self.startGameLoop()
