@@ -36,13 +36,13 @@ class Player(CollidableEntity.CollidableEntity):
             self.moveY = 0
             
         #Check for collisions on different entities
-        (doCollide, entityIndex) = self.checkCollision(self.mainObj.asteroidsList) 
+        (doCollide, entityIndex) = self.checkCollision(self.mainObj.asteroidController.asteroidsList) 
         
         if(not doCollide): 
             self.move()
         else:
             print("Game over")
-            #self.mainObj.gameOver = True
+            self.mainObj.gameOver = True
             
     def shoot(self):
         #Shoot and wait for gun cool down before we can shoot again!

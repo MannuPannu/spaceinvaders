@@ -17,8 +17,6 @@ class Star():
         
     def draw(self, screen):
         rect = pygame.Rect(self.pos[0], self.pos[1], self.starSize, self.starSize)
-        #circle(Surface, color, pos, radius, width=0)
-        #pygame.draw.circle(screen, self.starColor, self.pos, self.starSize)
         pygame.draw.rect(screen, self.starColor, rect)
         
     def moveStar(self, starSpeed):

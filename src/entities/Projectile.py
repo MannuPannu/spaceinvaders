@@ -27,12 +27,12 @@ class Projectile(CollidableEntity):
     def tick(self):
         
         #Check for collisions on different entities
-        (doCollide, entityIndex) = self.checkCollision(self.mainObj.asteroidsList)
+        (doCollide, entityIndex) = self.checkCollision(self.mainObj.asteroidController.asteroidsList)
          
         if(doCollide):
-            print("Hit!")
-            self.mainObj.asteroidsList.pop(entityIndex)  
-            self.hasCollided = True  
+            self.mainObj.asteroidController.asteroidsList.pop(entityIndex)  
+            self.hasCollided = True
+            self.mainObj.laserShotSound.play()  
             
         self.move()    
     

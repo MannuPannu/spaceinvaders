@@ -22,7 +22,6 @@ class CollidableEntity(Entity.Entity):
             otherEntityRect = Rect((entity.pos[0], entity.pos[1]), (entity.size[0], entity.size[1]))
             
             if(selfRect.colliderect(otherEntityRect)):
-                print (doCollide)
                 doCollide = True
                 break
         

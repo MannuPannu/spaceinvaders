@@ -4,6 +4,13 @@ from entities.Player import Player
 from entities.AmmoType import AmmoType
 from entities.Asteroid import Asteroid
 from level.BackgroundScroller import BackgroundScroller
+from Controllers.AsteroidController import AsteroidController
+
+# TODO: Add start up text, like "Try to clear the asteroid field!"
+# TODO: Add a asteroid factory that gets the asteroids out there
+# TODO: Add a counter for number of asteroids hit
+# TODO: Add death animations for asteroids as well as player
+# TODO: Add game over text
 
 class Main():
     
@@ -16,11 +23,12 @@ class Main():
     asteroidImage = pygame.image.load(os.path.join('..\gfx', 'asteroid.png'))
     
     #Init sounds
-    pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
+    pygame.mixer.init(frequency=48000, size=16, channels=2, buffer=4096)
     
     laserShotSound = pygame.mixer.Sound(os.path.join('..\sounds\lasershot.wav'))
-    #The players ammo type, only 1 for now
+    asteroidHitSound = pygame.mixer.Sound(os.path.join('..\sounds\foo.wav'))
     
+    #The players ammo type, only 1 for now
     ammoType = AmmoType(15, ammoLaserImage, (4, 32), 350)
     
     def __init__(self):
@@ -34,8 +42,9 @@ class Main():
         self.asteroidsList = []
         
         #Create main player
-        self.player = Player(self, self.shipImage, (32,32), (300, 420), self.ammoType, self.screenSize)
-        self.asteroidsList.append(Asteroid(self.asteroidImage, (32, 32), (100, 100), 1, 1)) 
+        self.player = Player(self, self.shipImage, (32,32), (300, 420), self.ammoType, self.screenSize) 
+        
+        self.asteroidController = AsteroidController(self, (32, 32), self.asteroidImage)
         
         self.backgroundScroller = BackgroundScroller(self.screenSize) 
         self.startGameLoop()

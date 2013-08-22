@@ -9,8 +9,8 @@ class Asteroid(CollidableEntity.CollidableEntity):
     
     def __init__(self, image, size, pos, speedX, speedY):   
         
-        self.maxSpeed = speedX
-        self.acceleration = speedX
+        self.maxSpeed = speedY
+        self.acceleration = speedY
         
         self.moveX = speedX
         self.moveY = speedY

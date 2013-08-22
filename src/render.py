@@ -13,8 +13,7 @@ def doRender(main):
         projectile.draw(main.screen)
     
     #Draw asteroids
-    for asteroid in main.asteroidsList:
-        asteroid.draw(main.screen)
+    main.asteroidController.draw(main.screen)
     
     #Draw player
     main.player.draw(main.screen)
