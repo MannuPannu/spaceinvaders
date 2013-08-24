@@ -32,7 +32,8 @@ class Projectile(CollidableEntity):
         if(doCollide):
             self.mainObj.asteroidController.asteroidsList.pop(entityIndex)  
             self.hasCollided = True
-            self.mainObj.laserShotSound.play()  
+            self.mainObj.asteroidExplosion.play()
+              
             
         self.move()    
     

@@ -41,6 +41,12 @@ class Player(CollidableEntity.CollidableEntity):
         if(not doCollide): 
             self.move()
         else:
+            clock = pygame.time.Clock()
+            
+            self.mainObj.playerDies.play()
+            while pygame.mixer.get_busy():
+                clock.tick(30)
+
             print("Game over")
             self.mainObj.gameOver = True
             

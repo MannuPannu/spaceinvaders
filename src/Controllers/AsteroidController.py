@@ -8,16 +8,16 @@ class AsteroidController():
     asteroidsList = []
     
     asteroidCoolDownTimer = 0
-    asteroidCoolDown = 2000
+    asteroidCoolDown = 1500
     
     def createAsteroid(self):
         
         #Create a random direction but that is pointing downwards
-        speedX = 0 #(float(random.randint(0, 5)) /10)
+        speedX = float(random.randint(-5, 5)) /10
         speedY = 1.6
         
         #Create random start pos
-        pos = (random.randint(0, self.mainObj.screenSize[0]-self.asteroidSize[0]), self.asteroidSize[1])
+        pos = (random.randint(0, self.mainObj.screenSize[0]-self.asteroidSize[0]), -self.asteroidSize[1])
         
         newAsteroid = Asteroid(self.asteroidImage, self.asteroidSize, pos, speedX, speedY)
         
