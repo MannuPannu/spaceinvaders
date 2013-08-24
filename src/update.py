@@ -18,6 +18,9 @@ def doUpdate(main):
     #Update score
     main.scoreSurface = main.scoreFont.render(str(main.score), 1, main.fontScoreColor)
     
+    #Update animations
+    main.animationController.tick()
+    
     
     
             

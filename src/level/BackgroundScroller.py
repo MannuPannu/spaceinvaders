@@ -5,7 +5,7 @@ from Background import Background
 class BackgroundScroller():
     
     backgroundList = []
-    starAmount = 25
+    starAmount = 20
     starSizeMax = 3
     starSizeMin = 1
     starSpeed = 5

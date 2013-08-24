@@ -21,6 +21,7 @@ def doRender(main):
     #Draw player
     main.player.draw(main.screen)
     
+    #Draw animation
+    main.animationController.drawAnimations(main.screen)
     
-       
     pygame.display.flip()
