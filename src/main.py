@@ -42,16 +42,25 @@ class Main():
         self.asteroidExplosion = pygame.mixer.Sound(os.path.join('..\sounds\snare003.wav'))
         self.playerDies = pygame.mixer.Sound(os.path.join('..\sounds\Noise001.wav'))
         
+        #Init fonts
+        self.fontScoreHeight = 25
+        self.fontScoreColor = (0, 210, 30)
+        self.fontScorePos = (25, 450)
+        self.scoreFont = pygame.font.Font(os.path.join('..\gfx\chintzy.ttf'), self.fontScoreHeight)
+        
         #Projectiles
         self.projectilesList = []
-        self.asteroidsList = []
         
         #Create main player
         self.player = Player(self, self.shipImage, (32,32), (300, 420), self.ammoType, self.screenSize) 
         
         self.asteroidController = AsteroidController(self, (32, 32), self.asteroidImage)
         
-        self.backgroundScroller = BackgroundScroller(self.screenSize) 
+        self.backgroundScroller = BackgroundScroller(self.screenSize)
+        
+        #Score system
+        self.score = 0 #Initial score
+        self.scoreAsteroidHit = 80
         self.startGameLoop()
         
     def startGameLoop(self):    

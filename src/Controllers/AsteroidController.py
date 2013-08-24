@@ -8,7 +8,9 @@ class AsteroidController():
     asteroidsList = []
     
     asteroidCoolDownTimer = 0
-    asteroidCoolDown = 1500
+    asteroidCoolDown = 800
+    
+    maxNumberOfAsteroids = 10
     
     def createAsteroid(self):
         
@@ -46,9 +48,11 @@ class AsteroidController():
                 
         
         #Create asteroid
-        if((self.asteroidCoolDownTimer + self.asteroidCoolDown) < pygame.time.get_ticks()):
-            self.createAsteroid()
-            self.asteroidCoolDownTimer = pygame.time.get_ticks() #Reset timer
+        if((self.asteroidCoolDownTimer + self.asteroidCoolDown) < pygame.time.get_ticks()): #If time has passed
+            
+            if(len(self.asteroidsList) < self.maxNumberOfAsteroids):
+                self.createAsteroid()
+                self.asteroidCoolDownTimer = pygame.time.get_ticks() #Reset timer
                 
     def draw(self, screen):
         for asteroid in self.asteroidsList:

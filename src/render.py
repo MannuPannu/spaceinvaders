@@ -8,6 +8,9 @@ def doRender(main):
     
     main.backgroundScroller.draw(main.screen)
     
+    #DrawScore
+    main.screen.blit(main.scoreSurface, main.fontScorePos)
+    
     #Draw projectiles
     for projectile in main.projectilesList:
         projectile.draw(main.screen)
@@ -17,5 +20,7 @@ def doRender(main):
     
     #Draw player
     main.player.draw(main.screen)
+    
+    
        
     pygame.display.flip()

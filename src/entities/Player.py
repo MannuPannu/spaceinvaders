@@ -6,9 +6,9 @@ class Player(CollidableEntity.CollidableEntity):
     """ The player class """
 
     #Player physics
-    maxSpeed = 6
+    maxSpeed = 7
     acceleration = 5
-    breakSpeed = 0.2
+    breakSpeed = 0.4
     
     coolDownTimer = 0
     

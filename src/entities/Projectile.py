@@ -33,7 +33,7 @@ class Projectile(CollidableEntity):
             self.mainObj.asteroidController.asteroidsList.pop(entityIndex)  
             self.hasCollided = True
             self.mainObj.asteroidExplosion.play()
-              
+            self.mainObj.score += self.mainObj.scoreAsteroidHit
             
         self.move()    
     
